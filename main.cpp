@@ -73,9 +73,14 @@ int main(){
 
     mappa.insert({dsecs(seconds(1079025209)),"ciao"});
 
+    mappa.insert({dsecs(seconds(0x7FFFFFFFFFFFFFFF)),"ciao from end"});
+
     mappa.insert({dsecs(seconds(-1079025209)),"ciao"});
 
+    //36 534 630 048
+    mappa.insert({dsecs(seconds(-0x7FFFFFFFFFFFFFFF)),"ciao from beginning"});
+
     for (auto&& iter : mappa){
-        cout << iter.first << "\n";
+        cout << iter.first << " " << iter.second << "\n";
     }
 }
