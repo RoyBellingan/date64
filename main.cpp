@@ -45,24 +45,37 @@ limits()
     using namespace std;
     using picoseconds = duration<int64_t, pico>;
     using fs = duration<int64_t, ratio_multiply<ratio<100>, nano>>;
-//    limit<picoseconds>("picoseconds range is");
-//    limit<nanoseconds>("nanoseconds range is");
-//    limit<fs>("VS system_clock range is");
-//    limit<microseconds>("microseconds range is");
-//    limit<milliseconds>("milliseconds range is");
+    //    limit<picoseconds>("picoseconds range is");
+    //    limit<nanoseconds>("nanoseconds range is");
+    //    limit<fs>("VS system_clock range is");
+    //    limit<microseconds>("microseconds range is");
+    //    limit<milliseconds>("milliseconds range is");
     limit<seconds>("seconds range is");
-//    limit<minutes>("minutes range is");
-//    limit<hours>("hours range is");
+    //    limit<minutes>("minutes range is");
+    //    limit<hours>("hours range is");
 }
 
+#include <map>
+
 int main(){
-    limits();
+    //limits();
     using namespace date;
     using namespace std;
     using namespace std::chrono;
-    using dsecs = sys_time<duration<double>>;
-     auto dmin = sys_time<seconds>(seconds(-100000000));
+    using dsecs = sys_time<duration<long>>;
+    auto dmin = sys_time<seconds>(seconds(-100000000));
 
-     auto i = sizeof(int);
-     int x = 0;
+
+    map<dsecs,string> mappa;
+    dsecs d = dsecs(seconds(1079025209));
+
+    mappa.insert({dsecs(seconds(2079025209)),"ciao"});
+
+    mappa.insert({dsecs(seconds(1079025209)),"ciao"});
+
+    mappa.insert({dsecs(seconds(-1079025209)),"ciao"});
+
+    for (auto&& iter : mappa){
+        cout << iter.first << "\n";
+    }
 }

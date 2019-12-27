@@ -403,9 +403,7 @@ public:
     explicit CONSTCD11 year(long y) NOEXCEPT;
 
     CONSTCD14 year& operator++()    NOEXCEPT;
-    CONSTCD14 year  operator++(int) NOEXCEPT;
     CONSTCD14 year& operator--()    NOEXCEPT;
-    CONSTCD14 year  operator--(int) NOEXCEPT;
 
     CONSTCD14 year& operator+=(const years& y) NOEXCEPT;
     CONSTCD14 year& operator-=(const years& y) NOEXCEPT;
@@ -1604,9 +1602,7 @@ operator<<(std::basic_ostream<CharT, Traits>& os, const month& m)
 
 CONSTCD11 inline year::year(long y) NOEXCEPT : y_(static_cast<decltype(y_)>(y)) {}
 CONSTCD14 inline year& year::operator++() NOEXCEPT {++y_; return *this;}
-CONSTCD14 inline year year::operator++(int) NOEXCEPT {auto tmp(*this); ++(*this); return tmp;}
 CONSTCD14 inline year& year::operator--() NOEXCEPT {--y_; return *this;}
-CONSTCD14 inline year year::operator--(int) NOEXCEPT {auto tmp(*this); --(*this); return tmp;}
 CONSTCD14 inline year& year::operator+=(const years& y) NOEXCEPT {*this = *this + y; return *this;}
 CONSTCD14 inline year& year::operator-=(const years& y) NOEXCEPT {*this = *this - y; return *this;}
 CONSTCD11 inline year year::operator-() const NOEXCEPT {return year{-y_};}
