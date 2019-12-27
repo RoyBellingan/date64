@@ -176,7 +176,7 @@ using ratio_divide = decltype(std::ratio_divide<R1, R2>{});
 // durations
 
 using days = std::chrono::duration
-    <int, detail::ratio_multiply<std::ratio<24>, std::chrono::hours::period>>;
+    <long, detail::ratio_multiply<std::ratio<24>, std::chrono::hours::period>>;
 
 using weeks = std::chrono::duration
     <int, detail::ratio_multiply<std::ratio<7>, days::period>>;
@@ -396,11 +396,11 @@ operator<<(std::basic_ostream<CharT, Traits>& os, const month& m);
 
 class year
 {
-    short y_;
+    long y_;
 
 public:
     year() = default;
-    explicit CONSTCD11 year(int y) NOEXCEPT;
+    explicit CONSTCD11 year(long y) NOEXCEPT;
 
     CONSTCD14 year& operator++()    NOEXCEPT;
     CONSTCD14 year  operator++(int) NOEXCEPT;
@@ -1602,7 +1602,7 @@ operator<<(std::basic_ostream<CharT, Traits>& os, const month& m)
 
 // year
 
-CONSTCD11 inline year::year(int y) NOEXCEPT : y_(static_cast<decltype(y_)>(y)) {}
+CONSTCD11 inline year::year(long y) NOEXCEPT : y_(static_cast<decltype(y_)>(y)) {}
 CONSTCD14 inline year& year::operator++() NOEXCEPT {++y_; return *this;}
 CONSTCD14 inline year year::operator++(int) NOEXCEPT {auto tmp(*this); ++(*this); return tmp;}
 CONSTCD14 inline year& year::operator--() NOEXCEPT {--y_; return *this;}
